@@ -11,21 +11,21 @@ def test_login_positive(page):
 
     assert login.is_dashboard_visible()
 
-# @pytest.mark.parametrize(
-#     "username,password,scenario",
-#     [
-#         ("WrongUser", "admin123", "invalid"),
-#         ("Admin", "wrongpass", "invalid"),
-#         ("Wrong", "wrong", "invalid"),
-#         ("", "", "empty"),
-#     ]
-# )
-# def test_login_negative(page, username, password, scenario):
-#     login = LoginPage(page)
-#     login.login(username, password)
+@pytest.mark.parametrize(
+    "username,password,scenario",
+    [
+        ("WrongUser", "admin123", "invalid"),
+        ("Admin", "wrongpass", "invalid"),
+        ("Wrong", "wrong", "invalid"),
+        ("", "", "empty"),
+    ]
+)
+def test_login_negative(page, username, password, scenario):
+    login = LoginPage(page)
+    login.login(username, password)
 
-#     if scenario == "invalid":
-#         assert "Invalid credentials" in login.get_invalid_credentials_error()
+    if scenario == "invalid":
+        assert "Invalid credentials" in login.get_invalid_credentials_error()
 
-#     elif scenario == "empty":
-#         assert login.is_required_field_error_visible()
+    elif scenario == "empty":
+        assert login.is_required_field_error_visible()
