@@ -29,6 +29,3 @@ def test_login_negative(page, username, password, scenario):
 
     elif scenario == "empty":
         assert login.is_required_field_error_visible()
-
-
-    # this is my project    
