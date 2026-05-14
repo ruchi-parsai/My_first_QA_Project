@@ -11,7 +11,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'docker run -v %cd%/allure-results:/app/allure-results playwright-framework'
+                bat 'docker run -v "%cd%/allure-results:/app/allure-results" playwright-framework'
             }
         }
     }
